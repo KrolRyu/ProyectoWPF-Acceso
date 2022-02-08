@@ -8,7 +8,7 @@
         Title="Smart Parking" Height="450" Width="800">
     <Grid>
         <DockPanel>
-            <Button DockPanel.Dock="Bottom" Background="Transparent" BorderBrush="Transparent" Width="150" Height="150" Margin="10" Click="Button_Click">
+            <Button DockPanel.Dock="Bottom" x:Name="boton" Background="Transparent" BorderBrush="Transparent" Width="150" Height="150" Margin="10" Click="Button_Click">
                 <Image Source="img/enter.png"></Image>
             </Button>
             <ContentControl x:Name="contentControl" Height="Auto" Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center"/>
