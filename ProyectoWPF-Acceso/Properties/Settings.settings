@@ -1,7 +1,30 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ProyectoWPF_Acceso.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MethodIACustomVision" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">v3.0/Prediction/768c2adc-d877-4c94-908a-847930e8426a/classify/iterations/Iteration1/url</Value>
+    </Setting>
+    <Setting Name="EndpointIACustomVision" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://customvisionproyectoparkingdint-prediction.cognitiveservices.azure.com/customvision/</Value>
+    </Setting>
+    <Setting Name="syncKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">NTY2OTI3QDMxMzkyZTM0MmUzMG85Q0toWFI2U2dGcVIwdjlXRHBDVGlHanpxZFlWVEJLcnZWUWtuSE5EekU9</Value>
+    </Setting>
+    <Setting Name="RutaConexionDatabase" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=C:/ProyectoParking/database/parking.db</Value>
+    </Setting>
+    <Setting Name="EndpointIACara" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://servicio-face-proyecto-parking.cognitiveservices.azure.com/face/v1.0/</Value>
+    </Setting>
+    <Setting Name="LicenseKeyIACara" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">38cac79a9bd04f648466d0b24ad1d9f5</Value>
+    </Setting>
+    <Setting Name="PLAZAS_COCHE" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="PLAZAS_MOTO" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

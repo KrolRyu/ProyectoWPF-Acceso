@@ -42,6 +42,7 @@ namespace ProyectoWPF_Acceso.vistas
             timer.Stop();
             mediaElement.Visibility = Visibility.Hidden;
             canvas.Visibility = Visibility.Visible;
+
         }
 
         void Loading()

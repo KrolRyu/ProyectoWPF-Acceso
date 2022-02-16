@@ -6,9 +6,20 @@
              xmlns:local="clr-namespace:ProyectoWPF_Acceso.vistas"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="ImageStyle" TargetType="Image">
+            <Setter Property="Source" Value="/img/cancelar.png"></Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=Result}" Value="True">
+                    <Setter Property="Source" Value="/img/cheque.png"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
-        <Canvas x:Name="canvas" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock >TEXTO DE PRUEBA XD</TextBlock> <!-- Aqui aparece bien o mal segun pueda aparcar o no-->
+        <Canvas x:Name="canvas" Margin="0,0,100,50" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image x:Name="checkImage" Style="{StaticResource ImageStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="100" Margin="0,0,0,0"></Image>
+            <!-- Aqui aparece bien o mal segun pueda aparcar o no-->
         </Canvas>
         <MediaElement x:Name="mediaElement" Visibility="Visible" UnloadedBehavior="Manual" MediaEnded="MediaElement_MediaEnded" Stretch="Fill"></MediaElement>
     </Grid>
