@@ -4,21 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProyectoWPF_Acceso.vistas"
+             xmlns:converter="clr-namespace:ProyectoWPF_Acceso.converter"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <Style x:Key="ImageStyle" TargetType="Image">
-            <Setter Property="Source" Value="/img/cancelar.png"></Setter>
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=Result}" Value="True">
-                    <Setter Property="Source" Value="/img/cheque.png"></Setter>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
+        <converter:ImageConverter x:Key="ImageConverter"></converter:ImageConverter>
     </UserControl.Resources>
     <Grid>
         <Canvas x:Name="canvas" Margin="0,0,100,50" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Image x:Name="checkImage" Style="{StaticResource ImageStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="100" Margin="0,0,0,0"></Image>
+            <Image x:Name="checkImage" Source="{Binding Result, Converter={StaticResource ImageConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="100" Margin="0,0,0,0"></Image>
             <!-- Aqui aparece bien o mal segun pueda aparcar o no-->
         </Canvas>
         <MediaElement x:Name="mediaElement" Visibility="Visible" UnloadedBehavior="Manual" MediaEnded="MediaElement_MediaEnded" Stretch="Fill"></MediaElement>

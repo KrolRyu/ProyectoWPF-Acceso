@@ -107,6 +107,7 @@
     <Compile Include="ClasesModelo\Estacionamiento.cs" />
     <Compile Include="ClasesModelo\Marca.cs" />
     <Compile Include="ClasesModelo\Vehiculo.cs" />
+    <Compile Include="converter\ImageConverter.cs" />
     <Compile Include="servicios\ServicioComprobarCara.cs" />
     <Compile Include="servicios\ServicioDatabase.cs" />
     <Compile Include="servicios\ServicioDetectarVehiculo.cs" />

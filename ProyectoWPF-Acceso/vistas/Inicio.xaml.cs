@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoWPF_Acceso.vistamodelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,13 +22,16 @@ namespace ProyectoWPF_Acceso.vistas
     /// </summary>
     public partial class Inicio : UserControl
     {
+        InicioVM vm = new InicioVM();
         public Inicio()
         {
             var bc = new BrushConverter();
             InitializeComponent();
+            this.DataContext = vm;
             this.Background = (Brush)bc.ConvertFrom("#dadedf");
             mediaElement.Source = new Uri(Environment.CurrentDirectory + @"\loading.mp4");
             Loading();
+            vm.Comprobar();
         }
 
         DispatcherTimer timer = new DispatcherTimer();

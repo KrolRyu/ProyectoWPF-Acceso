@@ -24,10 +24,10 @@ namespace ProyectoWPF_Acceso.vistamodelo
 
         }
 
-        public bool Comprobar(string img)
+        public bool Comprobar()
         {
             Result = true;
-            img = "/img/CarLongPlate43.jpg";
+            string img = "https://img.remediosdigitales.com/cbd115/fecha-matricula-coche-2/450_1000.jpg";
             int id = 0;
 
             string tipo = ServicioDetectarVehiculo.ComprobarVehiculo(img);
@@ -37,7 +37,7 @@ namespace ProyectoWPF_Acceso.vistamodelo
             {
                 if (e.Matricula == matricula)
                 {
-                    //Result = false;
+                    Result = false;
                 }
                 id = e.Id_estacionamientos;
             }
