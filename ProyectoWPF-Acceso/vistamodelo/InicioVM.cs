@@ -51,45 +51,55 @@ namespace ProyectoWPF_Acceso.vistamodelo
 
             string url = ServicioImgs.SubirImagenAAzure(img);
 
-            string tipo = ServicioDetectarVehiculo.ComprobarVehiculo(url);
-            string matricula = ServicioMatricula.SacarMatricula(url, tipo);
-
-            ObservableCollection<Estacionamiento> lista = ServicioDatabase.GetEstacionamientos();
-
-            foreach (Estacionamiento e in lista)
+            if (img != "")
             {
-                if (e.Matricula == matricula)
-                {                   
-                    Result = false;
+                string tipo = ServicioDetectarVehiculo.ComprobarVehiculo(url);
+                string matricula = ServicioMatricula.SacarMatricula(url, tipo);
+
+                ObservableCollection<Estacionamiento> lista = ServicioDatabase.GetEstacionamientos();
+
+                foreach (Estacionamiento e in lista)
+                {
+                    if (e.Matricula == matricula)
+                    {
+                        Result = false;
+                    }
+                    id = e.Id_estacionamientos;
                 }
-                id = e.Id_estacionamientos;
+                Estacionamiento estacionamiento = new Estacionamiento(id, url);
+                if (result)
+                {
+                    switch (estacionamiento.Tipo)
+                    {
+                        case "coche":
+                            Result = PlazasCoche > 0;
+                            break;
+                        case "moto":
+                            Result = PlazasMoto > 0;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (result)
+                {
+                    if (estacionamiento.Id_vehiculo != null)
+                    {
+                        ServicioDatabase.InsertarEstacionamiento(estacionamiento);
+                    }
+                    else
+                    {
+                        ServicioDatabase.InsertarEstacionamientoNoCliente(estacionamiento);
+                    }
+
+                }
             }
-            Estacionamiento estacionamiento = new Estacionamiento(id, url);
-            if (result)
+            else
             {
-                switch (estacionamiento.Tipo)
-                {
-                    case "coche":
-                        Result = PlazasCoche > 0;
-                        break;
-                    case "moto":
-                        Result = PlazasMoto > 0;
-                        break;
-                    default:
-                        break;
-                }
+                ServicioDialogos.ServicioMessageBox("Una imagen es necesaria", "Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                Result = false;
             }
-            if (result)
-            {           
-                if (estacionamiento.Id_vehiculo != null)
-                {
-                    ServicioDatabase.InsertarEstacionamiento(estacionamiento);
-                }else
-                {
-                    ServicioDatabase.InsertarEstacionamientoNoCliente(estacionamiento);
-                }
-                
-            }
+            
             
             return result;
         }

@@ -14,14 +14,23 @@ namespace ProyectoWPF_Acceso.servicios
         {
             var respuesta = PostVehiculo(ruta);
             Root root = JsonConvert.DeserializeObject<Root>(respuesta.Content);
-            if (root.predictions[0].probability > root.predictions[1].probability)
+            try
             {
-                return root.predictions[0].tagName;
+                if (root.predictions[0].probability > root.predictions[1].probability)
+                {
+                    return root.predictions[0].tagName;
+                }
+                else
+                {
+                    return root.predictions[1].tagName;
+                }
             }
-            else
+            catch (Exception)
             {
-                return root.predictions[1].tagName;
+
+                throw;
             }
+            
         }
 
         public static IRestResponse PostVehiculo(string imagen)
