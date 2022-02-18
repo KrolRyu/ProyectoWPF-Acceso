@@ -34,7 +34,7 @@ namespace ProyectoWPF_Acceso.vistamodelo
         public bool Result
         {
             get { return result; }
-            set { result = value; }
+            set { SetProperty(ref result ,value); }
         }
 
         public InicioVM()
@@ -65,16 +65,19 @@ namespace ProyectoWPF_Acceso.vistamodelo
                 id = e.Id_estacionamientos;
             }
             Estacionamiento estacionamiento = new Estacionamiento(id, url);
-            switch (estacionamiento.Tipo)
+            if (result)
             {
-                case "coche":
-                    Result = PlazasCoche > 0;
-                    break;
-                case "moto":
-                    Result = PlazasMoto > 0;
-                    break;
-                default:
-                    break;
+                switch (estacionamiento.Tipo)
+                {
+                    case "coche":
+                        Result = PlazasCoche > 0;
+                        break;
+                    case "moto":
+                        Result = PlazasMoto > 0;
+                        break;
+                    default:
+                        break;
+                }
             }
             if (result)
             {           

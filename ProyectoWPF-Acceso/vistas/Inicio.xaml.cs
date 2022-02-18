@@ -31,7 +31,7 @@ namespace ProyectoWPF_Acceso.vistas
             this.Background = (Brush)bc.ConvertFrom("#dadedf");
             mediaElement.Source = new Uri(@"/img/loading.mp4", UriKind.RelativeOrAbsolute);
             Loading();
-            vm.Comprobar();
+            vm.Comprobar();           
         }
 
         DispatcherTimer timer = new DispatcherTimer();

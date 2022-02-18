@@ -13,16 +13,13 @@ namespace ProyectoWPF_Acceso.converter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string img = "/img/";
-            switch (value)
+            if ((bool)value)
             {
-                case true:
-                    img += "cheque.png";
-                    break;
-                case false:
-                    img += "cancelar.png";
-                    break;
-                default:
-                    break;
+                img += "cheque.png";
+            }
+            else
+            {
+                img += "cancelar.png";
             }
             return img;
         }
