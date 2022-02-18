@@ -48,7 +48,7 @@ namespace ProyectoWPF_Acceso.servicios
             else
             {
                 JToken jt = JToken.Parse(response.Content).SelectToken("analyzeResult").SelectToken("readResults").First.SelectToken("lines").First.SelectToken("text");
-                JToken jt2 = JToken.Parse(response.Content).SelectToken("analyzeResult").SelectToken("readResults")[1].SelectToken("lines").First.SelectToken("text");
+                JToken jt2 = JToken.Parse(response.Content).SelectToken("analyzeResult").SelectToken("readResults").First.SelectToken("lines").First.Next.SelectToken("text");
                 return jt.ToString() + jt2.ToString();
             }
 
