@@ -112,7 +112,7 @@ namespace ProyectoWPF_Acceso.ClasesModelo
                 }
 
             }
-            this.Entrada = DateTime.Now.ToLongTimeString();
+            this.Entrada = DateTime.Now.ToString();
             this.salida = "";
             this.Importe = default;
         }

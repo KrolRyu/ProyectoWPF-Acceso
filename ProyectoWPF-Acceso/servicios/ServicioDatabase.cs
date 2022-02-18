@@ -312,6 +312,66 @@ namespace ProyectoWPF_Acceso.servicios
             return listaEstacionamientos;
         }
 
+        public static ObservableCollection<Estacionamiento> GetEstacionamientosCoches()
+        {
+            conexion.Open();
+            SqliteCommand comando = conexion.CreateCommand();
+            comando.CommandText = "SELECT * FROM estacionamientos WHERE tipo ='coche' AND salida = ''";
+            SqliteDataReader lector = comando.ExecuteReader();
+            ObservableCollection<Estacionamiento> listaEstacionamientos = new ObservableCollection<Estacionamiento>();
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    int id_estacionamiento = lector.GetInt32(0);
+                    int id_vehiculo = lector.GetInt32(1);
+                    string matricula = lector.GetString(2);
+                    string entrada = lector.GetString(3);
+                    string salida = lector.GetString(4);
+                    double importe = lector.GetDouble(5);
+                    string tipo = lector.GetString(6);
+                    listaEstacionamientos.Add(new Estacionamiento(id_estacionamiento, id_vehiculo, matricula, entrada, salida, importe, tipo));
+                }
+            }
+
+            lector.Close();
+
+            //Cerramos la conexión
+            conexion.Close();
+
+            return listaEstacionamientos;
+        }
+
+        public static ObservableCollection<Estacionamiento> GetEstacionamientosMotos()
+        {
+            conexion.Open();
+            SqliteCommand comando = conexion.CreateCommand();
+            comando.CommandText = "SELECT * FROM estacionamientos WHERE tipo = 'moto' AND salida = ''";
+            SqliteDataReader lector = comando.ExecuteReader();
+            ObservableCollection<Estacionamiento> listaEstacionamientos = new ObservableCollection<Estacionamiento>();
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    int id_estacionamiento = lector.GetInt32(0);
+                    int id_vehiculo = lector.GetInt32(1);
+                    string matricula = lector.GetString(2);
+                    string entrada = lector.GetString(3);
+                    string salida = lector.GetString(4);
+                    double importe = lector.GetDouble(5);
+                    string tipo = lector.GetString(6);
+                    listaEstacionamientos.Add(new Estacionamiento(id_estacionamiento, id_vehiculo, matricula, entrada, salida, importe, tipo));
+                }
+            }
+
+            lector.Close();
+
+            //Cerramos la conexión
+            conexion.Close();
+
+            return listaEstacionamientos;
+        }
+
         public static void EliminarEstacionamiento(Estacionamiento estacionamientos)
         {
             conexion.Open();

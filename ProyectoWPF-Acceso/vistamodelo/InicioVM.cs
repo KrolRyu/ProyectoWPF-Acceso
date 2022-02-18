@@ -12,6 +12,23 @@ namespace ProyectoWPF_Acceso.vistamodelo
 {
     class InicioVM : ObservableObject
     {
+        private int plazasCoche;
+
+        public int PlazasCoche
+        {
+            get { return plazasCoche; }
+            set { plazasCoche = value; }
+        }
+
+        private int plazasMoto;
+
+        public int PlazasMoto
+        {
+            get { return plazasMoto; }
+            set { plazasMoto = value; }
+        }
+
+
         private bool result;
 
         public bool Result
@@ -22,7 +39,8 @@ namespace ProyectoWPF_Acceso.vistamodelo
 
         public InicioVM()
         {
-
+            PlazasMoto = ServicioDatabase.GetEstacionamientosMotos().Count;
+            PlazasCoche = ServicioDatabase.GetEstacionamientosCoches().Count;
         }
 
         public bool Comprobar()
@@ -41,21 +59,31 @@ namespace ProyectoWPF_Acceso.vistamodelo
             foreach (Estacionamiento e in lista)
             {
                 if (e.Matricula == matricula)
-                {
+                {                   
                     Result = false;
                 }
                 id = e.Id_estacionamientos;
             }
-            if (result)
+            Estacionamiento estacionamiento = new Estacionamiento(id, url);
+            switch (estacionamiento.Tipo)
             {
-                Estacionamiento e = new Estacionamiento(id, url);
-                if (e.Id_vehiculo != null)
+                case "coche":
+                    Result = PlazasCoche > 0;
+                    break;
+                case "moto":
+                    Result = PlazasMoto > 0;
+                    break;
+                default:
+                    break;
+            }
+            if (result)
+            {           
+                if (estacionamiento.Id_vehiculo != null)
                 {
-                    ServicioDatabase.InsertarEstacionamiento(e);
-                }
-                else
+                    ServicioDatabase.InsertarEstacionamiento(estacionamiento);
+                }else
                 {
-                    ServicioDatabase.InsertarEstacionamientoNoCliente(e);
+                    ServicioDatabase.InsertarEstacionamientoNoCliente(estacionamiento);
                 }
                 
             }

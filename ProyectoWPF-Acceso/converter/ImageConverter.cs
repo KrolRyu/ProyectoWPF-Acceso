@@ -16,7 +16,7 @@ namespace ProyectoWPF_Acceso.converter
             switch (value)
             {
                 case true:
-                    img += "enter.png";
+                    img += "cheque.png";
                     break;
                 case false:
                     img += "cancelar.png";
