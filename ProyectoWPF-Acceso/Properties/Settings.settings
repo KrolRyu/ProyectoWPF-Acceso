@@ -26,5 +26,14 @@
     <Setting Name="PLAZAS_MOTO" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">100</Value>
     </Setting>
+    <Setting Name="EndpointImgs" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DefaultEndpointsProtocol=https;AccountName=actividadtema5;AccountKey=Plt4O/P0i4coCkog+BsK/FeBXHnz6sTqtlfVW2dXCT8FIkwfO9teD7fCI5rSwbNau2dvcv3Sf9AxmkkUeOyW9A==;EndpointSuffix=core.windows.net</Value>
+    </Setting>
+    <Setting Name="EndpointMatricula" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://reconocimientomatriculasproyectoparking.cognitiveservices.azure.com/vision/v3.2/read/analyze</Value>
+    </Setting>
+    <Setting Name="PredictionKeyIACustomVision" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">1d14987690a64deda0d17d7790d49cea</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

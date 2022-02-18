@@ -97,5 +97,35 @@ namespace ProyectoWPF_Acceso.Properties {
                 return ((int)(this["PLAZAS_MOTO"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DefaultEndpointsProtocol=https;AccountName=actividadtema5;AccountKey=Plt4O/P0i4co" +
+            "Ckog+BsK/FeBXHnz6sTqtlfVW2dXCT8FIkwfO9teD7fCI5rSwbNau2dvcv3Sf9AxmkkUeOyW9A==;End" +
+            "pointSuffix=core.windows.net")]
+        public string EndpointImgs {
+            get {
+                return ((string)(this["EndpointImgs"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://reconocimientomatriculasproyectoparking.cognitiveservices.azure.com/visio" +
+            "n/v3.2/read/analyze")]
+        public string EndpointMatricula {
+            get {
+                return ((string)(this["EndpointMatricula"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1d14987690a64deda0d17d7790d49cea")]
+        public string PredictionKeyIACustomVision {
+            get {
+                return ((string)(this["PredictionKeyIACustomVision"]));
+            }
+        }
     }
 }

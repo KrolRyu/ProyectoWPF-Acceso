@@ -29,7 +29,7 @@ namespace ProyectoWPF_Acceso.servicios
             var client = new RestClient(Properties.Settings.Default.EndpointIACustomVision);
             var request = new RestRequest(Properties.Settings.Default.MethodIACustomVision, Method.POST);
             string data = "{ 'url':'" + imagen + "'}";
-            request.AddHeader("Prediction-Key", Properties.Settings.Default.EndpointIACustomVision);
+            request.AddHeader("Prediction-Key", Properties.Settings.Default.PredictionKeyIACustomVision);
             request.AddHeader("Content-Type", "application/json");
             request.AddJsonBody(data);
             var response = client.Execute(request);

@@ -3,6 +3,7 @@ using ProyectoWPF_Acceso.ClasesModelo;
 using ProyectoWPF_Acceso.servicios;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,13 +28,17 @@ namespace ProyectoWPF_Acceso.vistamodelo
         public bool Comprobar()
         {
             Result = true;
-            string img = "https://img.remediosdigitales.com/cbd115/fecha-matricula-coche-2/450_1000.jpg";
-            int id = 0;
+            string img = ServicioDialogos.ExaminarImagen();
+            int id = 2;
 
-            string tipo = ServicioDetectarVehiculo.ComprobarVehiculo(img);
-            string matricula = ServicioMatricula.SacarMatricula(img, tipo);
+            string url = ServicioImgs.SubirImagenAAzure(img);
 
-            foreach (Estacionamiento e in ServicioDatabase.GetEstacionamientos())
+            string tipo = ServicioDetectarVehiculo.ComprobarVehiculo(url);
+            string matricula = ServicioMatricula.SacarMatricula(url, tipo);
+
+            ObservableCollection<Estacionamiento> lista = ServicioDatabase.GetEstacionamientos();
+
+            foreach (Estacionamiento e in lista)
             {
                 if (e.Matricula == matricula)
                 {
@@ -43,8 +48,16 @@ namespace ProyectoWPF_Acceso.vistamodelo
             }
             if (result)
             {
-                Estacionamiento e = new Estacionamiento(id, img);
-                ServicioDatabase.InsertarEstacionamiento(e);
+                Estacionamiento e = new Estacionamiento(id, url);
+                if (e.Id_vehiculo != null)
+                {
+                    ServicioDatabase.InsertarEstacionamiento(e);
+                }
+                else
+                {
+                    ServicioDatabase.InsertarEstacionamientoNoCliente(e);
+                }
+                
             }
             
             return result;

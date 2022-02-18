@@ -37,7 +37,7 @@ namespace ProyectoWPF_Acceso.servicios
 
             comando.CommandText = @"CREATE TABLE IF NOT EXISTS vehiculos (
                                         id_vehiculo INTEGER PRIMARY KEY AUTOINCREMENT,
-                                        id_cliente  INTEGER NOT NULL REFERENCES clientes (id_cliente),
+                                        id_cliente  INTEGER REFERENCES clientes (id_cliente),
                                         matricula   TEXT    NOT NULL,
                                         id_marca    INTEGER REFERENCES marcas (id_marca),
                                         modelo      TEXT,
@@ -328,8 +328,8 @@ namespace ProyectoWPF_Acceso.servicios
         {
             conexion.Open();
             SqliteCommand comando = conexion.CreateCommand();
-            comando.CommandText = "insert into estacionamientos (id_estacionamiento, id_vehiculo, matricula, entrada, salida, importe, tipo) VALUES (@id_estacionamiento, @id_vehiculo, @matricula, @entrada, @salida, importe, tipo);";
-            comando.Parameters.Add("@id_estacionamiento", SqliteType.Integer);
+            comando.CommandText = "insert into estacionamientos (id_vehiculo, matricula, entrada, salida, importe, tipo) VALUES (@id_vehiculo, @matricula, @entrada, @salida, @importe, @tipo);";
+            //comando.Parameters.Add("@id_estacionamiento", SqliteType.Integer);
             comando.Parameters.Add("@id_vehiculo", SqliteType.Integer);
             comando.Parameters.Add("@matricula", SqliteType.Text);
             comando.Parameters.Add("@entrada", SqliteType.Text);
@@ -337,8 +337,35 @@ namespace ProyectoWPF_Acceso.servicios
             comando.Parameters.Add("@importe", SqliteType.Real);
             comando.Parameters.Add("@tipo", SqliteType.Text);
 
-            comando.Parameters["@id_estacionamiento"].Value = estacionamiento.Id_estacionamientos;
+           //comando.Parameters["@id_estacionamiento"].Value = estacionamiento.Id_estacionamientos;
             comando.Parameters["@id_vehiculo"].Value = estacionamiento.Id_vehiculo;
+            comando.Parameters["@matricula"].Value = estacionamiento.Matricula;
+            comando.Parameters["@entrada"].Value = estacionamiento.Entrada;
+            comando.Parameters["@salida"].Value = estacionamiento.Salida;
+            comando.Parameters["@importe"].Value = estacionamiento.Importe;
+            comando.Parameters["@tipo"].Value = estacionamiento.Tipo;
+
+            comando.ExecuteNonQuery();
+
+            //Cerramos la conexión
+            conexion.Close();
+        }
+
+        public static void InsertarEstacionamientoNoCliente(Estacionamiento estacionamiento)
+        {
+            conexion.Open();
+            SqliteCommand comando = conexion.CreateCommand();
+            comando.CommandText = "insert into estacionamientos (matricula, entrada, salida, importe, tipo) VALUES ( @matricula, @entrada, @salida, @importe, @tipo);";
+            //comando.Parameters.Add("@id_estacionamiento", SqliteType.Integer);
+            //comando.Parameters.Add("@id_vehiculo", SqliteType.Integer);
+            comando.Parameters.Add("@matricula", SqliteType.Text);
+            comando.Parameters.Add("@entrada", SqliteType.Text);
+            comando.Parameters.Add("@salida", SqliteType.Text);
+            comando.Parameters.Add("@importe", SqliteType.Real);
+            comando.Parameters.Add("@tipo", SqliteType.Text);
+
+            //comando.Parameters["@id_estacionamiento"].Value = estacionamiento.Id_estacionamientos;
+            //comando.Parameters["@id_vehiculo"].Value = estacionamiento.Id_vehiculo;
             comando.Parameters["@matricula"].Value = estacionamiento.Matricula;
             comando.Parameters["@entrada"].Value = estacionamiento.Entrada;
             comando.Parameters["@salida"].Value = estacionamiento.Salida;

@@ -29,7 +29,7 @@ namespace ProyectoWPF_Acceso.vistas
             InitializeComponent();
             this.DataContext = vm;
             this.Background = (Brush)bc.ConvertFrom("#dadedf");
-            mediaElement.Source = new Uri(Environment.CurrentDirectory + @"\loading.mp4");
+            //mediaElement.Source = new Uri(@"/img/loading.mp4", UriKind.RelativeOrAbsolute);
             Loading();
             vm.Comprobar();
         }

@@ -15,6 +15,6 @@
             <Image x:Name="checkImage" Source="{Binding Result, Converter={StaticResource ImageConverter}}"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="100" Margin="0,0,0,0"></Image>
             <!-- Aqui aparece bien o mal segun pueda aparcar o no-->
         </Canvas>
-        <MediaElement x:Name="mediaElement" Visibility="Visible" UnloadedBehavior="Manual" MediaEnded="MediaElement_MediaEnded" Stretch="Fill"></MediaElement>
+        <MediaElement x:Name="mediaElement" Source="/img/loading.mp4" Visibility="Visible" UnloadedBehavior="Manual" MediaEnded="MediaElement_MediaEnded" Stretch="Fill"></MediaElement>
     </Grid>
 </UserControl>
